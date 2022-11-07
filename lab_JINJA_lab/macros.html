@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Пример JINJA2</title>
+</head>
+<body>
+ <p>
+ Привет, {% if user[3] == "ж" %}
+ студентка
+{% else %}
+ студент
+{% endif %}
+  <b style="color:#00FF00;">{{add_spaces(user[0])}}!</b>
+ </p>
+ <p>
+ Ваша образовательная программа
+  <b>{% if user[1] == "Бизнес-информатика" %}
+  38.03.05
+  {% else %}
+  38.03.01
+  {% endif %} {{user[1]}}</b>.
+ </p>
+ <p>
+ Вы изучаете {{dis_count(len(user[2]))}}: <ul>
+  {% macro render_list(list) %}
+ {% set n = len(list) %}
+ {% for i in range(n) %}
+ {% if i == n - 1 %}
+ <li>{{list[i]}}.</li>
+ {% else %}
+ <li>{{list[i]}},</li>
+ {% endif %}
+ {% endfor %}
+{% endmacro %}
+  {{ render_list(user[2]) }}
+ </ul>
+ </p>
+
+</body>
+</html>
